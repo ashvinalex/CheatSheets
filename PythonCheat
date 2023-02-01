@@ -1,0 +1,23 @@
+# create a new env using conda 
+
+conda create --name <name> python=3.5 
+
+
+# activate an environment
+
+ source activate <name>
+ conda activate <name>
+ 
+ 
+ # de-activate an environment
+ 
+ conda deactivate <name>
+ 
+ 
+ 
+ # create emnviornment dependencies yml
+ conda env export > environment.yml
+ 
+ 
+ 
+ 
