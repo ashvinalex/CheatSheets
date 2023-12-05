@@ -14,10 +14,26 @@ conda create --name <name> python=3.5
  conda deactivate <name>
  
  
- 
  # create emnviornment dependencies yml
  conda env export > environment.yml
  
  
- 
- 
+# 
+from google.colab import auth
+from google.auth import default
+
+try:
+  import gspread
+except ModuleNotFoundError:
+  if 'google.colab' in str(get_ipython()):
+    %pip install gspread
+  import spread
+
+auth.authenticate_user()
+creds, _ = default()
+gc = gspread.authorize(creds)
+
+worksheet = gc.open("gspread-test")
+sheet1 = worksheet.sheet1
+
+sheet1.update([reviews.columns.values.tolist()] + reviews.fillna(-1).values.tolist())
